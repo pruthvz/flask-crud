@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block head %} {% endblock%} {% block content %}
+<div class="content container mx-auto">
+  <h1 class="text-6xl font-bold pt-10 pb-2 pl-9">Update Task</h1>
+  <p class="text-gray-400 pl-11 pb-5">
+    Update your task using the input field.
+  </p>
+  <form action="/update/{{task.id}}" method="POST">
+    <input
+      class="ml-10 bg-gray-700 text-gray-200 p-2"
+      type="text"
+      name="content"
+      id="content"
+      value="{{task.content}}"
+    />
+    <input
+      type="submit"
+      class="
+        bg-green-500
+        text-white
+        p-2
+        cursor-pointer
+        pl-12
+        pr-12
+        hover:bg-green-600
+      "
+      value="Add Task"
+    />
+  </form>
+</div>
+{% endblock %}

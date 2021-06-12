@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% block head %} {% endblock%} {% block content %}
+<div class="content">
+  <h2 class="text-5xl font-bold pb-5 p-5 container mx-auto">Task Master</h2>
+
+  {% if tasks|length < 1 %}
+  <h4 class="pl-7 container mx-auto">There are no tasks at the moment</h4>
+  {% else %}
+  <div class="table w-full p-2">
+    <table class="w-full border container mx-auto">
+      <thead>
+        <tr class="bg-gray-50 border-b">
+          <th
+            class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500"
+          >
+            <div class="flex items-center justify-center">
+              Task Name
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                />
+              </svg>
+            </div>
+          </th>
+
+          <th
+            class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500"
+          >
+            <div class="flex items-center justify-center">
+              Created on
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                />
+              </svg>
+            </div>
+          </th>
+          <th
+            class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500"
+          >
+            <div class="flex items-center justify-center">
+              Action
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                />
+              </svg>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
+          <td class="p-2 border-r">{{task.content}}</td>
+
+          <td class="p-2 border-r">{{task.data_created.date()}}</td>
+          <td>
+            <a
+              href="/update/{{task.id}}"
+              class="
+                bg-blue-500
+                hover:bg-blue-700
+                rounded
+                p-2
+                text-white
+                hover:shadow-lg
+                text-xs
+                font-thin
+              "
+              >Edit</a
+            >
+            <a
+              href="/delete/{{task.id}}"
+              class="
+                bg-red-500
+                hover:bg-red-700
+                rounded
+                p-2
+                text-white
+                hover:shadow-lg
+                text-xs
+                font-thin
+              "
+              >Remove</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% endif %}
+</div>
+{% endblock %}
